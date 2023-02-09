@@ -7,10 +7,14 @@ from options import homeInitialization
 def main():
     option1In = homeInitialization.homeScreenOption1()
     option1Out = homeInitialization.homeScreenInput(option1In)
+    
+    #need sftp somewhere here
+
     user = option1Out[0]
     userPort = 22
     hostname= option1Out[1]
     userPassword = option1Out[2]
+
     try:
         client = paramiko.SSHClient()
         client.load_system_host_keys()
@@ -29,5 +33,6 @@ def main():
         print("Invalid input")   
     print(type(stdin))
     print(type(stdout))
+
 if __name__ == "__main__":
     main()
