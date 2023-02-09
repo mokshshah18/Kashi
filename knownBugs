@@ -1,3 +1,0 @@
-1. 
-    Program fails to run right after options 1 and 3 are executed and requires the program to be restarted and option 2 to be used.
-    Program runs normally is "../Creds.txt" is changed to "Creds.txt" but creating a personal credential file in the source directory is a security risk

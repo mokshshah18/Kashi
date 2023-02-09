@@ -18,7 +18,7 @@ class homeInitialization:
         return option1In
     
     def homeScreenOption2():
-        file = open("../Creds.txt","a")
+        file = open("Creds.txt","a")
         print("Enter in a username:", end=" ")
         username = input()
         print("Enter in the hostname:", end=" ")
@@ -27,22 +27,23 @@ class homeInitialization:
         file.write(username+"\n")
         file.write(hostname+"\n")
         file.write(password+"\n")
-        return homeInitialization.return_Creds()
-    
+        file.close() #important because the strings may not be rendered till the file is not closed
+        retLi = homeInitialization.return_Creds()
+        return retLi
     def homeScreenInput(option1):
         if(option1=="1"):
             return homeInitialization.homeScreenOption2()
         elif(option1=="2"):
             return homeInitialization.return_Creds()
         elif(option1=="3"):
-            os.remove("../Creds.txt")
+            os.remove("Creds.txt")
             return homeInitialization.homeScreenOption2()
         elif(option1=="4"):
             print("Cya soon!")
             exit()
     
     def return_Creds():
-        file = open("../Creds.txt","r")
+        file = open("Creds.txt","r")
         retList = []
         for i in file:
             retList.append(i.rstrip('\n'))
