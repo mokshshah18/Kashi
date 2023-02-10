@@ -2,6 +2,9 @@ import os #used to remove a file
 import getpass #used for password
 from sys import exit #used to exit the program on option 4
 
+#file imports
+from transferProtocols import cSftp
+
 class homeInitialization:
     
     def __init__(self):
@@ -14,7 +17,7 @@ class homeInitialization:
         print("2. To use a previously saved file")
         print("3. Delete and create a new local file")
         print("4. Exit")
-        option1In = input()
+        option1In = "2"
         return option1In
     
     def homeScreenOption2():
@@ -48,3 +51,16 @@ class homeInitialization:
         for i in file:
             retList.append(i.rstrip('\n'))
         return retList
+    
+class cmdOptions:
+    def __init__(self,command,sftp) -> None:
+        self.command = command
+        self.sftp = sftp
+
+    def commandLineIfs(self):
+        cmd = self.command
+        sftpClient = self.sftp
+        if cmd == "cd" : 
+            sftpClient = cSftp.cd(sftpClient, "./Desktop")#a function that changes the directory
+            print(sftpClient.getcwd())
+        return cmd
